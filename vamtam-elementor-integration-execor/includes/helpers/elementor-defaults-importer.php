@@ -34,7 +34,19 @@ class Elementor_Defaults_Importer {
 	 * Constructor
 	 */
 	private function __construct() {
+		// Hook into Elementor's loaded action to ensure it's fully initialized
+		add_action( 'elementor/loaded', [ $this, 'init' ] );
+	}
+
+	/**
+	 * Initialize after Elementor is loaded
+	 */
+	public function init() {
+		// Run on admin_init to apply defaults
 		add_action( 'admin_init', [ $this, 'maybe_import_defaults' ] );
+		
+		// Also try on elementor/init for better compatibility
+		add_action( 'elementor/init', [ $this, 'maybe_import_defaults' ] );
 	}
 
 	/**

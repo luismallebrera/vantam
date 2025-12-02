@@ -141,6 +141,9 @@ if ( ! class_exists( 'VamtamElementorIntregration' ) ) {
 		}
 
 		public function includes() {
+			// Load bridge class first (required by other helpers)
+			require_once VAMTAM_ELEMENTOR_INT_DIR . 'includes/helpers/elementor-bridge.php';
+			
 			// Helpers.
 			foreach( glob( VAMTAM_ELEMENTOR_INT_DIR . 'includes/helpers/*.php' ) as $helper ) {
 				require_once $helper;

@@ -35,7 +35,6 @@ class Elementor_Defaults_Importer {
 	 */
 	private function __construct() {
 		add_action( 'admin_init', [ $this, 'maybe_import_defaults' ] );
-		add_action( 'admin_notices', [ $this, 'show_import_notice' ] );
 	}
 
 	/**
@@ -85,65 +84,12 @@ class Elementor_Defaults_Importer {
 			return;
 		}
 
-		// Check if user wants to skip import
-		if ( isset( $_GET['vamtam_skip_defaults'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'skip_defaults' ) ) {
-			$this->mark_defaults_imported();
-			wp_safe_redirect( admin_url() );
-			exit;
-		}
-
-		// Check if user wants to import now
-		if ( isset( $_GET['vamtam_import_defaults'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'import_defaults' ) ) {
-			$this->import_defaults();
-			$this->mark_defaults_imported();
-			wp_safe_redirect( add_query_arg( 'vamtam_defaults_imported', '1', admin_url() ) );
-			exit;
-		}
+		// Automatically import defaults
+		$this->import_defaults();
+		$this->mark_defaults_imported();
 	}
 
-	/**
-	 * Show admin notice for importing defaults
-	 */
-	public function show_import_notice() {
-		// Don't show if already imported
-		if ( $this->defaults_imported() ) {
-			// Show success message if just imported
-			if ( isset( $_GET['vamtam_defaults_imported'] ) ) {
-				?>
-				<div class="notice notice-success is-dismissible">
-					<p><strong>Elementor Integration Extended:</strong> Global styles and settings have been imported successfully!</p>
-				</div>
-				<?php
-			}
-			return;
-		}
 
-		// Don't show if Elementor is not active
-		if ( ! $this->is_elementor_active() ) {
-			return;
-		}
-
-		// Don't show if not on main admin pages
-		$screen = get_current_screen();
-		if ( ! in_array( $screen->id, [ 'dashboard', 'plugins', 'toplevel_page_elementor' ] ) ) {
-			return;
-		}
-
-		$import_url = wp_nonce_url( add_query_arg( 'vamtam_import_defaults', '1' ), 'import_defaults', '_wpnonce' );
-		$skip_url = wp_nonce_url( add_query_arg( 'vamtam_skip_defaults', '1' ), 'skip_defaults', '_wpnonce' );
-		?>
-		<div class="notice notice-info">
-			<p>
-				<strong>Elementor Integration Extended:</strong> Would you like to import default global colors and typography styles? 
-				This will enhance your Elementor experience with pre-configured design system.
-			</p>
-			<p>
-				<a href="<?php echo esc_url( $import_url ); ?>" class="button button-primary">Import Defaults</a>
-				<a href="<?php echo esc_url( $skip_url ); ?>" class="button">Skip</a>
-			</p>
-		</div>
-		<?php
-	}
 
 	/**
 	 * Import default settings and styles

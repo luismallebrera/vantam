@@ -176,42 +176,31 @@ class Elementor_Defaults_Importer {
 				$active_kit_id = get_option( 'elementor_active_kit' );
 				
 				if ( $active_kit_id ) {
-					// Import system colors
+					// Get existing settings
+					$settings = get_post_meta( $active_kit_id, '_elementor_page_settings', true );
+					if ( ! is_array( $settings ) ) {
+						$settings = [];
+					}
+
+					// Merge all defaults into settings
 					if ( ! empty( $defaults['system_colors'] ) ) {
-						update_post_meta( $active_kit_id, '_elementor_page_settings', [
-							'system_colors' => $defaults['system_colors'],
-						] );
+						$settings['system_colors'] = $defaults['system_colors'];
 					}
 
-					// Import system typography
 					if ( ! empty( $defaults['system_typography'] ) ) {
-						$settings = get_post_meta( $active_kit_id, '_elementor_page_settings', true );
-						if ( ! is_array( $settings ) ) {
-							$settings = [];
-						}
 						$settings['system_typography'] = $defaults['system_typography'];
-						update_post_meta( $active_kit_id, '_elementor_page_settings', $settings );
 					}
 
-					// Import custom colors
 					if ( ! empty( $defaults['custom_colors'] ) ) {
-						$settings = get_post_meta( $active_kit_id, '_elementor_page_settings', true );
-						if ( ! is_array( $settings ) ) {
-							$settings = [];
-						}
 						$settings['custom_colors'] = $defaults['custom_colors'];
-						update_post_meta( $active_kit_id, '_elementor_page_settings', $settings );
 					}
 
-					// Import custom typography
 					if ( ! empty( $defaults['custom_typography'] ) ) {
-						$settings = get_post_meta( $active_kit_id, '_elementor_page_settings', true );
-						if ( ! is_array( $settings ) ) {
-							$settings = [];
-						}
 						$settings['custom_typography'] = $defaults['custom_typography'];
-						update_post_meta( $active_kit_id, '_elementor_page_settings', $settings );
 					}
+
+					// Save all settings at once
+					update_post_meta( $active_kit_id, '_elementor_page_settings', $settings );
 				}
 			}
 		}

@@ -2,7 +2,24 @@
 ( function( $, undefined ) {
 	"use strict";
 
+	// Initialize VAMTAM_FRONT if it doesn't exist (for non-VamTam themes)
+	window.VAMTAM_FRONT = window.VAMTAM_FRONT || {};
 	window.VAMTAM_FRONT.elementor = window.VAMTAM_FRONT.elementor || {};
+	window.VAMTAM_FRONT.widget_mods_list = window.VAMTAM_FRONT.widget_mods_list || {};
+	
+	// Initialize VAMTAM if it doesn't exist (for non-VamTam themes)
+	window.VAMTAM = window.VAMTAM || {};
+	window.VAMTAM.debounce = window.VAMTAM.debounce || function(func, wait) {
+		let timeout;
+		return function executedFunction(...args) {
+			const later = () => {
+				clearTimeout(timeout);
+				func(...args);
+			};
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+		};
+	};
 
 	var VAMTAM_ELEMENTOR = {
 		domLoaded: function () {

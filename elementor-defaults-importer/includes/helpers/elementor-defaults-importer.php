@@ -4,10 +4,10 @@
  * 
  * Handles importing default Elementor settings and global styles
  *
- * @package VamtamElementorIntegration
+ * @package SodaElementorIntegration
  */
 
-namespace VamtamElementorIntegration;
+namespace SodaElementorIntegration;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -51,14 +51,14 @@ class Elementor_Defaults_Importer {
 	 * Check if defaults have been imported
 	 */
 	private function defaults_imported() {
-		return get_option( 'vamtam_elementor_defaults_imported', false );
+		return get_option( 'soda_elementor_defaults_imported', false );
 	}
 
 	/**
 	 * Mark defaults as imported
 	 */
 	private function mark_defaults_imported() {
-		update_option( 'vamtam_elementor_defaults_imported', true );
+		update_option( 'soda_elementor_defaults_imported', true );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Elementor_Defaults_Importer {
 	 * Get the path to defaults files
 	 */
 	private function get_defaults_file_path( $filename ) {
-		return VAMTAM_ELEMENTOR_DIR_PATH . $filename;
+		return SODA_ELEMENTOR_DIR_PATH . $filename;
 	}
 
 	/**

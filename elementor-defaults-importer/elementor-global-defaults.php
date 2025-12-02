@@ -5,55 +5,55 @@
   array (
     0 => 
     array (
-      '_id' => 'vamtam_accent_1',
+      '_id' => 'soda_accent_1',
       'title' => 'Accent 1',
       'color' => '#0F3D3A',
     ),
     1 => 
     array (
-      '_id' => 'vamtam_accent_2',
+      '_id' => 'soda_accent_2',
       'title' => 'Accent 2',
       'color' => '#C8F8A9',
     ),
     2 => 
     array (
-      '_id' => 'vamtam_accent_3',
+      '_id' => 'soda_accent_3',
       'title' => 'Accent 3',
       'color' => '#F2F5F1',
     ),
     3 => 
     array (
-      '_id' => 'vamtam_accent_4',
+      '_id' => 'soda_accent_4',
       'title' => 'Accent 4',
       'color' => '#F8F7F3',
     ),
     4 => 
     array (
-      '_id' => 'vamtam_accent_5',
+      '_id' => 'soda_accent_5',
       'title' => 'Accent 5',
       'color' => '#FFFFFF',
     ),
     5 => 
     array (
-      '_id' => 'vamtam_accent_6',
+      '_id' => 'soda_accent_6',
       'title' => 'Accent 6',
       'color' => '#000000',
     ),
     6 => 
     array (
-      '_id' => 'vamtam_accent_7',
+      '_id' => 'soda_accent_7',
       'title' => 'Accent 7',
       'color' => '#0000001A',
     ),
     7 => 
     array (
-      '_id' => 'vamtam_accent_8',
+      '_id' => 'soda_accent_8',
       'title' => 'Accent 8',
       'color' => '#00000099',
     ),
     8 => 
     array (
-      '_id' => 'vamtam_sticky_header_bg_color',
+      '_id' => 'soda_sticky_header_bg_color',
       'title' => 'Sticky Header Bg Color',
       'color' => '#0F3D3ACC',
     ),
@@ -62,7 +62,7 @@
   array (
     0 => 
     array (
-      '_id' => 'vamtam_primary_font',
+      '_id' => 'soda_primary_font',
       'title' => 'Primary Font',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -102,7 +102,7 @@
     ),
     1 => 
     array (
-      '_id' => 'vamtam_h1',
+      '_id' => 'soda_h1',
       'title' => 'H1',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -158,7 +158,7 @@
     ),
     2 => 
     array (
-      '_id' => 'vamtam_h2',
+      '_id' => 'soda_h2',
       'title' => 'H2',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -214,7 +214,7 @@
     ),
     3 => 
     array (
-      '_id' => 'vamtam_h3',
+      '_id' => 'soda_h3',
       'title' => 'H3',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -270,7 +270,7 @@
     ),
     4 => 
     array (
-      '_id' => 'vamtam_h4',
+      '_id' => 'soda_h4',
       'title' => 'H4',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -310,7 +310,7 @@
     ),
     5 => 
     array (
-      '_id' => 'vamtam_h5',
+      '_id' => 'soda_h5',
       'title' => 'H5',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',
@@ -342,7 +342,7 @@
     ),
     6 => 
     array (
-      '_id' => 'vamtam_h6',
+      '_id' => 'soda_h6',
       'title' => 'H6',
       'typography_typography' => 'custom',
       'typography_font_family' => 'DM Sans',

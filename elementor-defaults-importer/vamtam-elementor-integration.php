@@ -13,9 +13,9 @@
  * Requires PHP: 7.0
  */
 
-if ( ! class_exists( 'VamtamElementorIntregration' ) ) {
+if ( ! class_exists( 'SodaElementorIntregration' ) ) {
 
-	class VamtamElementorIntregration {
+	class SodaElementorIntregration {
 
 		const PLUGIN_VERSION            = '1.0.0';
 		const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
@@ -83,17 +83,17 @@ if ( ! class_exists( 'VamtamElementorIntregration' ) ) {
 		}
 
 		public function load_plugin() {
-			if ( ! defined( 'VAMTAM_ELEMENTOR_INT_DIR' ) ) {
-				define( 'VAMTAM_ELEMENTOR_INT_DIR', plugin_dir_path( __FILE__ ) );
+			if ( ! defined( 'SODA_ELEMENTOR_INT_DIR' ) ) {
+				define( 'SODA_ELEMENTOR_INT_DIR', plugin_dir_path( __FILE__ ) );
 			}
-			if ( ! defined( 'VAMTAM_ELEMENTOR_DIR_PATH' ) ) {
-				define( 'VAMTAM_ELEMENTOR_DIR_PATH', VAMTAM_ELEMENTOR_INT_DIR );
+			if ( ! defined( 'SODA_ELEMENTOR_DIR_PATH' ) ) {
+				define( 'SODA_ELEMENTOR_DIR_PATH', SODA_ELEMENTOR_INT_DIR );
 			}
 
 			// Load only the defaults importer
-			require_once VAMTAM_ELEMENTOR_INT_DIR . 'includes/helpers/elementor-defaults-importer.php';
+			require_once SODA_ELEMENTOR_INT_DIR . 'includes/helpers/elementor-defaults-importer.php';
 		}
 	}
 
-	VamtamElementorIntregration::instance();
+	SodaElementorIntregration::instance();
 }

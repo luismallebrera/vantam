@@ -141,6 +141,11 @@ if ( ! class_exists( 'VamtamElementorIntregration' ) ) {
 		}
 
 		public function includes() {
+			// Define path constant for use in importer
+			if ( ! defined( 'VAMTAM_ELEMENTOR_DIR_PATH' ) ) {
+				define( 'VAMTAM_ELEMENTOR_DIR_PATH', VAMTAM_ELEMENTOR_INT_DIR );
+			}
+			
 			// Load bridge class first (required by other helpers)
 			require_once VAMTAM_ELEMENTOR_INT_DIR . 'includes/helpers/elementor-bridge.php';
 			

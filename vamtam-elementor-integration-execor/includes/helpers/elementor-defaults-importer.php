@@ -34,19 +34,17 @@ class Elementor_Defaults_Importer {
 	 * Constructor
 	 */
 	private function __construct() {
-		// Hook into Elementor's loaded action to ensure it's fully initialized
+		// Hook into multiple points to ensure defaults get applied
 		add_action( 'elementor/loaded', [ $this, 'init' ] );
+		add_action( 'admin_init', [ $this, 'maybe_import_defaults' ] );
 	}
 
 	/**
 	 * Initialize after Elementor is loaded
 	 */
 	public function init() {
-		// Run on admin_init to apply defaults
-		add_action( 'admin_init', [ $this, 'maybe_import_defaults' ] );
-		
-		// Also try on elementor/init for better compatibility
-		add_action( 'elementor/init', [ $this, 'maybe_import_defaults' ] );
+		// Try to apply defaults when Elementor initializes
+		$this->maybe_import_defaults();
 	}
 
 	/**
@@ -130,8 +128,8 @@ class Elementor_Defaults_Importer {
 			$defaults = include $php_file;
 			
 			if ( is_array( $defaults ) ) {
-				// Get active kit
-				$active_kit_id = get_option( 'elementor_active_kit' );
+				// Get active kit - if it doesn't exist, Elementor will create it
+				$active_kit_id = \Elementor\Plugin::$instance->kits_manager->get_active_id();
 				
 				if ( $active_kit_id ) {
 					// Get existing settings
@@ -159,6 +157,12 @@ class Elementor_Defaults_Importer {
 
 					// Save all settings at once
 					update_post_meta( $active_kit_id, '_elementor_page_settings', $settings );
+					
+					// Also update the kit document
+					$kit = \Elementor\Plugin::$instance->documents->get( $active_kit_id );
+					if ( $kit ) {
+						$kit->save( [ 'settings' => $settings ] );
+					}
 				}
 			}
 		}
